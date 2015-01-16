@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Number To Word";
+}
+@section Scripts{
+    <script type="text/javascript" src="~/AngularJS/numberToWordController.js"></script>
+}
+<div>
+<div class="span12 hidden-desktop">
+    <div class="padd"><div class="navis"></div></div>
+</div>
+<div class="span12">
+    <div class="whity content">
+        <div class="posts">
+            <div class="entry">
+                @*<h2>Convert a number to an English word currency representation</h2>*@
+                <div class="alert alert-dismissable alert-info">
+                    <h3>This site converts a number to an English word currency representation. <br/>
+                    Examples (Input, Output)</h3>
+                    <ul>
+                        <li>130423.05, "One Hundred and Thirty Thousand Four Hundred and Twenty Three Dollars and Five Cents"</li>
+                        <li>1000010000.15, "One Billion Ten Thousand Dollars and Fifteen Cents"</li>
+                        <li>1.151, "One Dollar and Fifteen Cents"</li>
+                    </ul>
+
+                </div>
+                <div class="padd">
+                    <div class="co-form">
+                        <form name="theForm" class="form-horizontal" data-ng-controller="numberToWordController" data-ng-submit="convertNumber()" novalidate>
+                            <fieldset>
+                                <div class="control-group">
+                                    <label class="control-label" for="number">Input</label>
+                                    <div class="controls">
+                                        <input type="number" class="input-medium" id="number" placeholder="Enter decimal number..." name="number" data-ng-model="number" min="1" max="2000000000" required>
+                                        <span class="error" data-ng-show="theForm.number.$dirty && theForm.number.$error.required">*</span>
+                                        <span class="error" data-ng-show="theForm.number.$dirty && theForm.number.$error.number">No a valid number.</span>
+                                        <span class="error" data-ng-show="theForm.number.$dirty && theForm.number.$error.min">Enter a positive number.</span>
+                                        <span class="error" data-ng-show="theForm.number.$dirty && theForm.number.$error.max">Number is too large.</span>
+                                        <button type="submit" class="btn" ng-disabled="theForm.$invalid">Convert</button>
+                                        <loading></loading>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="comment">Output</label>
+                                    <div class="controls">
+                                        <div class="alert alert-dismissable alert-success">
+                                            <span data-ng-show="!convertResult">Output will be displayed here.</span>
+                                            <span data-ng-show="convertResult">{{convertResult}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mobily hidden-desktop">
+
+</div>
+</div>

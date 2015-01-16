@@ -1,0 +1,8 @@
+C:\Users\chli\Desktop\NumberToWord\NumberToWord.DB\bin\Debug\NumberToWord.DB.dll
+C:\Users\chli\Desktop\NumberToWord\NumberToWord.DB\bin\Debug\NumberToWord.DB.pdb
+C:\Users\chli\Desktop\NumberToWord\NumberToWord.DB\bin\Debug\EntityFramework.dll
+C:\Users\chli\Desktop\NumberToWord\NumberToWord.DB\bin\Debug\EntityFramework.xml
+C:\Users\chli\Desktop\NumberToWord\NumberToWord.DB\obj\Debug\NumberToWord.DB.dll
+C:\Users\chli\Desktop\NumberToWord\NumberToWord.DB\obj\Debug\NumberToWord.DB.pdb
+C:\Users\chli\Desktop\NumberToWord\NumberToWord.DB\obj\Debug\NumberToWord.DB.csproj.GenerateResource.Cache
+C:\Users\chli\Desktop\NumberToWord\NumberToWord.DB\obj\Debug\NumberToWord.DB.Migrations.InitialCreate.resources

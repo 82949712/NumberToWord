@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NumberToWordModelStoreContainer" CdmEntityContainer="NumberToWordEntities">
+    <EntitySetMapping Name="Calculations">
+      <EntityTypeMapping TypeName="NumberToWordModel.Calculation">
+        <MappingFragment StoreEntitySet="Calculation">
+          <ScalarProperty Name="CalculationId" ColumnName="CalculationId" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,2206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://mcom.co.nz/RichChannelService/ServiceContracts/2009/08" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RichChannelService" targetNamespace="http://mcom.co.nz/RichChannelService/ServiceContracts/2009/08" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://mcom.co.nz/RichChannelService/ServiceContracts/2009/08">
+      <xsd:element name="PreAuthenticate">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element xmlns:q1="http://mcom.co.nz/RichChannelService/DataContracts/2009/08" minOccurs="0" name="request" nillable="true" type="q1:PreAuthenticateRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PreAuthenticateResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element xmlns:q2="http://mcom.co.nz/RichChannelService/DataContracts/2009/08" minOccurs="0" name="PreAuthenticateResult" nillable="true" type="q2:PreAuthenticateResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Process">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element xmlns:q3="http://mcom.co.nz/RichChannelService/DataContracts/2009/08" minOccurs="0" name="request" nillable="true" type="q3:RichChannelRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ProcessResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element xmlns:q4="http://mcom.co.nz/RichChannelService/DataContracts/2009/08" minOccurs="0" name="ProcessResult" nillable="true" type="q4:RichChannelResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element xmlns:q5="http://mcom.co.nz/RichChannelService/DataContracts/2009/08" name="RichChannelServiceFault" nillable="true" type="q5:RichChannelServiceFault" />
+    </xsd:schema>
+    <xsd:schema xmlns:tns="http://mcom.co.nz/RichChannelService/DataContracts/2009/08" elementFormDefault="qualified" targetNamespace="http://mcom.co.nz/RichChannelService/DataContracts/2009/08">
+      <xsd:complexType name="PostInstallNotificationRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="DownloadToken" nillable="true" type="xsd:string" />
+              <xsd:element name="ApplicationName" nillable="true" type="xsd:string" />
+              <xsd:element name="ApplicationType" nillable="true" type="xsd:string" />
+              <xsd:element name="ApplicationVersion" nillable="true" type="xsd:string" />
+              <xsd:element name="ApplicationLocale" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="PostInstallNotificationRequest" nillable="true" type="tns:PostInstallNotificationRequest" />
+      <xsd:complexType name="RichChannelRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element name="SessionID" nillable="true" type="xsd:string" />
+              <xsd:element name="SequenceNumber" type="xsd:int" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="RichChannelRequest" nillable="true" type="tns:RichChannelRequest" />
+      <xsd:complexType name="RichChannelContractBase">
+        <xsd:sequence />
+      </xsd:complexType>
+      <xsd:element name="RichChannelContractBase" nillable="true" type="tns:RichChannelContractBase" />
+      <xsd:complexType name="PreAuthenticateRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="DeviceToken" nillable="true" type="xsd:string" />
+              <xsd:element name="DeviceInfo" nillable="true" type="tns:DeviceInfo" />
+              <xsd:element name="ApplicationInfo" nillable="true" type="tns:ApplicationInfo" />
+              <xsd:element name="DeviceCookie" nillable="true" type="xsd:string" />
+              <xsd:element name="Locale" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="UniqueBankLabel" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="BankInternalIdentifier" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="PromotionalCode" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="IsAnonymousUser" type="xsd:boolean" />
+              <xsd:element minOccurs="0" name="UserName" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="IsCustomBrandedApp" type="xsd:boolean" />
+              <xsd:element minOccurs="0" name="ClientDeviceFingerprint" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="PreAuthenticateRequest" nillable="true" type="tns:PreAuthenticateRequest" />
+      <xsd:complexType name="DeviceInfo">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element name="UniqueId" nillable="true" type="xsd:string" />
+              <xsd:element name="NotificationAddress" nillable="true" type="xsd:string" />
+              <xsd:element name="PhoneNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="Name" nillable="true" type="xsd:string" />
+              <xsd:element name="Type" nillable="true" type="xsd:string" />
+              <xsd:element name="OS" nillable="true" type="xsd:string" />
+              <xsd:element name="OSVersion" nillable="true" type="xsd:string" />
+              <xsd:element name="DeviceIntegrity" type="xsd:int" />
+              <xsd:element name="ScreenHeight" type="xsd:int" />
+              <xsd:element name="ScreenWidth" type="xsd:int" />
+              <xsd:element name="UserAgent" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="DeviceInfo" nillable="true" type="tns:DeviceInfo" />
+      <xsd:complexType name="ApplicationInfo">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element name="ClientType" nillable="true" type="xsd:string" />
+              <xsd:element name="ClientVersion" nillable="true" type="xsd:string" />
+              <xsd:element name="VersionNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="ProtocolVersion" nillable="true" type="xsd:string" />
+              <xsd:element name="BrandingVersion" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ApplicationInfo" nillable="true" type="tns:ApplicationInfo" />
+      <xsd:complexType name="AnswerMFAQuestionRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="QuestionID" nillable="true" type="xsd:string" />
+              <xsd:element name="QuestionText" nillable="true" type="xsd:string" />
+              <xsd:element name="AnswerText" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="AnswerMFAQuestionRequest" nillable="true" type="tns:AnswerMFAQuestionRequest" />
+      <xsd:complexType name="LoginRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element xmlns:q6="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="LoginType" type="q6:LoginType" />
+              <xsd:element minOccurs="0" name="Password" nillable="true" type="xsd:string" />
+              <xsd:element name="UpdateMenu" type="xsd:boolean" />
+              <xsd:element minOccurs="0" name="ClientDeviceFingerprint" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="LoginRequest" nillable="true" type="tns:LoginRequest" />
+      <xsd:complexType name="BalanceRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="BalanceRequest" nillable="true" type="tns:BalanceRequest" />
+      <xsd:complexType name="TransactionHistoryRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="AccountNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="PagingToken" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="TransactionHistoryRequest" nillable="true" type="tns:TransactionHistoryRequest" />
+      <xsd:complexType name="LogoffRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="LogoffRequest" nillable="true" type="tns:LogoffRequest" />
+      <xsd:complexType name="RegistrationRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="RegistrationRequest" nillable="true" type="tns:RegistrationRequest" />
+      <xsd:complexType name="GetEnrolmentInfoRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="LoginCredentials" nillable="true" type="tns:LoginCredentials" />
+              <xsd:element name="DeviceInfo" nillable="true" type="tns:DeviceInfo" />
+              <xsd:element name="ApplicationInfo" nillable="true" type="tns:ApplicationInfo" />
+              <xsd:element minOccurs="0" name="UniqueBankLabel" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="BankInternalIdentifier" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="ClientDeviceFingerprint" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetEnrolmentInfoRequest" nillable="true" type="tns:GetEnrolmentInfoRequest" />
+      <xsd:complexType name="LoginCredentials">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element name="UserName" nillable="true" type="xsd:string" />
+              <xsd:element name="Password" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="LoginCredentials" nillable="true" type="tns:LoginCredentials" />
+      <xsd:complexType name="FundTransferRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="FromAccountNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="ToAccountNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="Amount" type="xsd:double" />
+              <xsd:element name="CustomerRef" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="IsMfaTransaction" type="xsd:boolean" />
+              <xsd:element minOccurs="0" name="QuestionID" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="QuestionText" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="AnswerText" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="FundTransferRequest" nillable="true" type="tns:FundTransferRequest" />
+      <xsd:complexType name="GetBillsRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetBillsRequest" nillable="true" type="tns:GetBillsRequest" />
+      <xsd:complexType name="GetOutstandingBillsCountRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetOutstandingBillsCountRequest" nillable="true" type="tns:GetOutstandingBillsCountRequest" />
+      <xsd:complexType name="GetCategoriesRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetCategoriesRequest" nillable="true" type="tns:GetCategoriesRequest" />
+      <xsd:complexType name="GetTermsAndConditionsRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetTermsAndConditionsRequest" nillable="true" type="tns:GetTermsAndConditionsRequest" />
+      <xsd:complexType name="GetPayeesRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="PagingToken" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetPayeesRequest" nillable="true" type="tns:GetPayeesRequest" />
+      <xsd:complexType name="GetPayeesAndBillsRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="PagingToken" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetPayeesAndBillsRequest" nillable="true" type="tns:GetPayeesAndBillsRequest" />
+      <xsd:complexType name="PayeePaymentRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="FromAccountNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="PayeeIdentifier" nillable="true" type="xsd:string" />
+              <xsd:element name="Amount" type="xsd:double" />
+              <xsd:element name="PaymentDate" type="xsd:dateTime" />
+              <xsd:element name="CustomerRef" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="StatementId" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="IsMfaTransaction" type="xsd:boolean" />
+              <xsd:element minOccurs="0" name="QuestionID" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="QuestionText" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="AnswerText" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="PayeePaymentRequest" nillable="true" type="tns:PayeePaymentRequest" />
+      <xsd:complexType name="GetPayeesPaymentsRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="PagingToken" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetPayeesPaymentsRequest" nillable="true" type="tns:GetPayeesPaymentsRequest" />
+      <xsd:complexType name="CancelPayeePaymentRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="PaymentIdentifier" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="IsMfaTransaction" type="xsd:boolean" />
+              <xsd:element minOccurs="0" name="QuestionID" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="QuestionText" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="AnswerText" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="CancelPayeePaymentRequest" nillable="true" type="tns:CancelPayeePaymentRequest" />
+      <xsd:complexType name="ModifyPayeePaymentRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="PaymentIdentifier" nillable="true" type="xsd:string" />
+              <xsd:element name="Amount" type="xsd:double" />
+              <xsd:element name="Date" type="xsd:dateTime" />
+              <xsd:element minOccurs="0" name="Reference" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="IsMfaTransaction" type="xsd:boolean" />
+              <xsd:element minOccurs="0" name="QuestionID" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="QuestionText" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="AnswerText" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ModifyPayeePaymentRequest" nillable="true" type="tns:ModifyPayeePaymentRequest" />
+      <xsd:complexType name="ATMBranchSearchRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element xmlns:q7="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="LocationType" type="q7:LocationType" />
+              <xsd:element xmlns:q8="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="SearchMethod" type="q8:SearchMethod" />
+              <xsd:element name="Location" nillable="true" type="tns:LocationInfo" />
+              <xsd:element minOccurs="0" name="ApplicationInfo" nillable="true" type="tns:ApplicationInfo" />
+              <xsd:element minOccurs="0" name="UniqueBankLabel" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ATMBranchSearchRequest" nillable="true" type="tns:ATMBranchSearchRequest" />
+      <xsd:complexType name="LocationInfo">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element xmlns:q9="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="LocationType" type="q9:LocationType" />
+              <xsd:element name="Address" nillable="true" type="tns:Address" />
+              <xsd:element name="Name" nillable="true" type="xsd:string" />
+              <xsd:element name="PhoneNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="HoursOfOperation" nillable="true" type="xsd:string" />
+              <xsd:element name="Longitude" nillable="true" type="xsd:string" />
+              <xsd:element name="Latitude" nillable="true" type="xsd:string" />
+              <xsd:element name="Distance" nillable="true" type="xsd:string" />
+              <xsd:element name="ExtraInfo" nillable="true" type="tns:ArrayOfNameValuePair" />
+              <xsd:element name="SearchResultHeading" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="LocationInfo" nillable="true" type="tns:LocationInfo" />
+      <xsd:complexType name="Address">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element name="Street" nillable="true" type="xsd:string" />
+              <xsd:element name="City" nillable="true" type="xsd:string" />
+              <xsd:element name="State" nillable="true" type="xsd:string" />
+              <xsd:element name="ZipCode" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="Address" nillable="true" type="tns:Address" />
+      <xsd:complexType name="ArrayOfNameValuePair">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="NameValuePair" nillable="true" type="tns:NameValuePair" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfNameValuePair" nillable="true" type="tns:ArrayOfNameValuePair" />
+      <xsd:complexType name="NameValuePair">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element name="Name" nillable="true" type="xsd:string" />
+              <xsd:element name="Value" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="NameValuePair" nillable="true" type="tns:NameValuePair" />
+      <xsd:complexType name="GetEarliestPaymentDateRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="PayerAccountNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="PaymentPayeeIdentifier" nillable="true" type="xsd:string" />
+              <xsd:element name="Amount" type="xsd:double" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetEarliestPaymentDateRequest" nillable="true" type="tns:GetEarliestPaymentDateRequest" />
+      <xsd:complexType name="ValidatePaymentRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="PayerAccountNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="PaymentPayeeIdentifier" nillable="true" type="xsd:string" />
+              <xsd:element name="Amount" type="xsd:double" />
+              <xsd:element name="Date" type="xsd:dateTime" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ValidatePaymentRequest" nillable="true" type="tns:ValidatePaymentRequest" />
+      <xsd:complexType name="BrandingInfoRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="DeviceToken" nillable="true" type="xsd:string" />
+              <xsd:element name="LastUpdateTime" type="xsd:dateTime" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="BrandingInfoRequest" nillable="true" type="tns:BrandingInfoRequest" />
+      <xsd:complexType name="GetResourceRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="NodeId" type="xsd:int" />
+              <xsd:element name="ResourceKey" nillable="true" type="xsd:string" />
+              <xsd:element name="LastUpdateTime" type="xsd:dateTime" />
+              <xsd:element xmlns:q10="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.Framework.Core.Configuration" name="DataRepresentationType" type="q10:ResourceDataRepresentationType" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetResourceRequest" nillable="true" type="tns:GetResourceRequest" />
+      <xsd:complexType name="GetCheckImageRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="TransactionId" nillable="true" type="xsd:string" />
+              <xsd:element name="ImageSide" type="tns:ImageSide" />
+              <xsd:element name="TransactionDate" type="xsd:dateTime" />
+              <xsd:element name="Amount" type="xsd:double" />
+              <xsd:element name="RTN" nillable="true" type="xsd:string" />
+              <xsd:element name="AccountNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="CheckNumber" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetCheckImageRequest" nillable="true" type="tns:GetCheckImageRequest" />
+      <xsd:simpleType name="ImageSide">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Front" />
+          <xsd:enumeration value="Back" />
+          <xsd:enumeration value="Both" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="ImageSide" nillable="true" type="tns:ImageSide" />
+      <xsd:complexType name="AddDepositImageRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="Image" nillable="true" type="tns:ChequeImage" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="AddDepositImageRequest" nillable="true" type="tns:AddDepositImageRequest" />
+      <xsd:complexType name="ChequeImage">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element name="Data" nillable="true" type="xsd:base64Binary" />
+              <xsd:element name="Side" type="tns:ChequeSide" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ChequeImage" nillable="true" type="tns:ChequeImage" />
+      <xsd:simpleType name="ChequeSide">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Front">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Back">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="ChequeSide" nillable="true" type="tns:ChequeSide" />
+      <xsd:complexType name="GetDepositImageRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="ChequeSide" type="tns:ChequeSide" />
+              <xsd:element name="DepositId" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetDepositImageRequest" nillable="true" type="tns:GetDepositImageRequest" />
+      <xsd:complexType name="GetDepositsRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="DepositStatusFilter" nillable="true" type="tns:DepositStatus" />
+              <xsd:element name="ItemCount" type="xsd:int" />
+              <xsd:element name="ItemOffset" type="xsd:int" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetDepositsRequest" nillable="true" type="tns:GetDepositsRequest" />
+      <xsd:simpleType name="DepositStatus">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Pending">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Accepted">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Failed">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="Unknown">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="DepositStatus" nillable="true" type="tns:DepositStatus" />
+      <xsd:complexType name="SubmitDepositRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="ImageIdFront" nillable="true" type="xsd:string" />
+              <xsd:element name="ImageIdBack" nillable="true" type="xsd:string" />
+              <xsd:element name="AccountNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="Amount" type="xsd:decimal" />
+              <xsd:element minOccurs="0" name="IsMfaTransaction" type="xsd:boolean" />
+              <xsd:element minOccurs="0" name="QuestionID" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="QuestionText" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="AnswerText" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="SubmitDepositRequest" nillable="true" type="tns:SubmitDepositRequest" />
+      <xsd:complexType name="ValidateDepositRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="AccountNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="Amount" type="xsd:decimal" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ValidateDepositRequest" nillable="true" type="tns:ValidateDepositRequest" />
+      <xsd:complexType name="GetPersonalPaymentContactsRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="PageNumber" nillable="true" type="xsd:int" />
+              <xsd:element minOccurs="0" name="PageSize" nillable="true" type="xsd:int" />
+              <xsd:element minOccurs="0" name="SearchParams" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetPersonalPaymentContactsRequest" nillable="true" type="tns:GetPersonalPaymentContactsRequest" />
+      <xsd:complexType name="ProcessPersonalPaymentRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="ContactId" nillable="true" type="xsd:string" />
+              <xsd:element name="EndpointId" nillable="true" type="xsd:string" />
+              <xsd:element name="Amount" type="xsd:decimal" />
+              <xsd:element name="Message" nillable="true" type="xsd:string" />
+              <xsd:element name="PayerAccountId" nillable="true" type="xsd:string" />
+              <xsd:element name="PaymentSpeed" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ProcessPersonalPaymentRequest" nillable="true" type="tns:ProcessPersonalPaymentRequest" />
+      <xsd:complexType name="AnswerMfaForProcessPersonalPaymentRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="AnswerText" nillable="true" type="xsd:string" />
+              <xsd:element name="PaymentId" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="AnswerMfaForProcessPersonalPaymentRequest" nillable="true" type="tns:AnswerMfaForProcessPersonalPaymentRequest" />
+      <xsd:complexType name="ValidatePersonalPaymentRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="ContactId" nillable="true" type="xsd:string" />
+              <xsd:element name="EndpointId" nillable="true" type="xsd:string" />
+              <xsd:element name="Amount" type="xsd:decimal" />
+              <xsd:element name="Message" nillable="true" type="xsd:string" />
+              <xsd:element name="PayerAccountId" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ValidatePersonalPaymentRequest" nillable="true" type="tns:ValidatePersonalPaymentRequest" />
+      <xsd:complexType name="AddPersonalPaymentContactRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="FirstName" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="LastName" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="Endpoint" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="AddPersonalPaymentContactRequest" nillable="true" type="tns:AddPersonalPaymentContactRequest" />
+      <xsd:complexType name="GetIncomingPersonalPaymentsRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="PageNumber" type="xsd:int" />
+              <xsd:element name="PageSize" type="xsd:int" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetIncomingPersonalPaymentsRequest" nillable="true" type="tns:GetIncomingPersonalPaymentsRequest" />
+      <xsd:complexType name="ReceiveIncomingPersonalPaymentRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="DepositAccountId" nillable="true" type="xsd:string" />
+              <xsd:element name="IncomingPersonalPaymentId" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ReceiveIncomingPersonalPaymentRequest" nillable="true" type="tns:ReceiveIncomingPersonalPaymentRequest" />
+      <xsd:complexType name="GetPersonalPaymentHistoryRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="PageNumber" type="xsd:int" />
+              <xsd:element name="MaxPageSize" type="xsd:int" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetPersonalPaymentHistoryRequest" nillable="true" type="tns:GetPersonalPaymentHistoryRequest" />
+      <xsd:complexType name="PingRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="PingRequest" nillable="true" type="tns:PingRequest" />
+      <xsd:complexType name="GetMfaQuestionRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetMfaQuestionRequest" nillable="true" type="tns:GetMfaQuestionRequest" />
+      <xsd:complexType name="GetDynamicBrandingInfoRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence>
+              <xsd:element name="LastUpdateTime" type="xsd:dateTime" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetDynamicBrandingInfoRequest" nillable="true" type="tns:GetDynamicBrandingInfoRequest" />
+      <xsd:complexType name="MarkNewTCsAsReadRequest">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelRequest">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="MarkNewTCsAsReadRequest" nillable="true" type="tns:MarkNewTCsAsReadRequest" />
+      <xsd:complexType name="PostInstallNotificationResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q11="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="PostInstallNotificationResult" type="q11:PostInstallNotificationResult" />
+              <xsd:element name="PostInstallNotificationResultText" nillable="true" type="xsd:string" />
+              <xsd:element name="UniqueBankLabel" nillable="true" type="xsd:string" />
+              <xsd:element name="BankInternalIdentifier" nillable="true" type="xsd:string" />
+              <xsd:element name="DeviceToken" nillable="true" type="xsd:string" />
+              <xsd:element name="BankName" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="PostInstallNotificationResponse" nillable="true" type="tns:PostInstallNotificationResponse" />
+      <xsd:complexType name="RichChannelResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element xmlns:q12="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="Result" type="q12:RichChannelResult" />
+              <xsd:element name="ResultText" nillable="true" type="xsd:string" />
+              <xsd:element name="SessionID" nillable="true" type="xsd:string" />
+              <xsd:element name="SequenceNumber" type="xsd:int" />
+              <xsd:element minOccurs="0" name="AdditionalData" nillable="true" type="tns:ArrayOfNameValuePair" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="RichChannelResponse" nillable="true" type="tns:RichChannelResponse" />
+      <xsd:complexType name="PreAuthenticateResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q13="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="PreAuthenticateResult" type="q13:PreAuthenticateResult" />
+              <xsd:element name="PreAuthenticateResultText" nillable="true" type="xsd:string" />
+              <xsd:element name="SessionTimeout" type="xsd:int" />
+              <xsd:element name="VersionCheckResponse" nillable="true" type="tns:VersionCheck" />
+              <xsd:element name="HasMobilePIN" type="xsd:boolean" />
+              <xsd:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Configurations" nillable="true" type="q14:ArrayOfKeyValueOfstringstring" />
+              <xsd:element name="SecurityImageContent" nillable="true" type="xsd:string" />
+              <xsd:element name="SecurityImageLength" type="xsd:int" />
+              <xsd:element name="SecurityImageText" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="MFAChallengeQuestionID" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="MFAChallengeQuestion" nillable="true" type="xsd:string" />
+              <xsd:element name="BankInternalIdentifier" nillable="true" type="xsd:string" />
+              <xsd:element name="BankName" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="MaskedUsername" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="TCsUpdated" type="xsd:boolean" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="PreAuthenticateResponse" nillable="true" type="tns:PreAuthenticateResponse" />
+      <xsd:complexType name="VersionCheck">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element xmlns:q15="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="VersionCheckResult" type="q15:VersionCheckResult" />
+              <xsd:element name="Description" nillable="true" type="xsd:string" />
+              <xsd:element name="Link" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="VersionCheck" nillable="true" type="tns:VersionCheck" />
+      <xsd:complexType name="AnswerMFAQuestionResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q16="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="MFAResult" type="q16:MFAResult" />
+              <xsd:element name="MFAChallengeQuestionID" nillable="true" type="xsd:string" />
+              <xsd:element name="MFAChallengeQuestion" nillable="true" type="xsd:string" />
+              <xsd:element name="SecurityImageContent" nillable="true" type="xsd:string" />
+              <xsd:element name="SecurityImageLength" type="xsd:int" />
+              <xsd:element name="SecurityImageText" nillable="true" type="xsd:string" />
+              <xsd:element xmlns:q17="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="LoginState" type="q17:MFAResultLoginState" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="AnswerMFAQuestionResponse" nillable="true" type="tns:AnswerMFAQuestionResponse" />
+      <xsd:complexType name="LoginResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q18="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="LoginResult" type="q18:LoginResult" />
+              <xsd:element name="LoginResultText" nillable="true" type="xsd:string" />
+              <xsd:element name="RemainingAttempts" type="xsd:int" />
+              <xsd:element minOccurs="0" name="ExcludedMenu" nillable="true" type="tns:MenuItem" />
+              <xsd:element name="BillCountSpecified" type="xsd:boolean" />
+              <xsd:element name="BillCount" type="xsd:int" />
+              <xsd:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Settings" nillable="true" type="q19:ArrayOfKeyValueOfstringstring" />
+              <xsd:element minOccurs="0" name="MFAChallengeQuestionID" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="MFAChallengeQuestion" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="LoginResponse" nillable="true" type="tns:LoginResponse" />
+      <xsd:complexType name="MenuItem">
+        <xsd:sequence>
+          <xsd:element name="Type" nillable="true" type="xsd:string" />
+          <xsd:element name="Value" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfMenuItem">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Property" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MenuItem" nillable="true" type="tns:MenuItem" />
+      <xsd:complexType name="ArrayOfMenuItem">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="MenuItem" nillable="true" type="tns:MenuItem" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfMenuItem" nillable="true" type="tns:ArrayOfMenuItem" />
+      <xsd:complexType name="BalanceResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q20="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="BalanceResult" type="q20:BalanceResult" />
+              <xsd:element name="BalanceResultText" nillable="true" type="xsd:string" />
+              <xsd:element name="Accounts" nillable="true" type="tns:ArrayOfAccount" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="BalanceResponse" nillable="true" type="tns:BalanceResponse" />
+      <xsd:complexType name="ArrayOfAccount">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Account" nillable="true" type="tns:Account" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfAccount" nillable="true" type="tns:ArrayOfAccount" />
+      <xsd:complexType name="Account">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element name="AccountNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="DisplayAccountNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="AccountName" nillable="true" type="xsd:string" />
+              <xsd:element name="DisplayAccountName" nillable="true" type="xsd:string" />
+              <xsd:element name="AccountType" nillable="true" type="xsd:string" />
+              <xsd:element name="Usage" nillable="true" type="xsd:string" />
+              <xsd:element name="PrimaryDisplayBalance" nillable="true" type="tns:AccountBalance" />
+              <xsd:element name="TransferDisplayBalance" nillable="true" type="tns:AccountBalance" />
+              <xsd:element name="PaymentDisplayBalance" nillable="true" type="tns:AccountBalance" />
+              <xsd:element name="Balances" nillable="true" type="tns:ArrayOfAccountBalance" />
+              <xsd:element name="AccountProperties" nillable="true" type="tns:ArrayOfNameValuePair" />
+              <xsd:element minOccurs="0" name="Visible" type="xsd:boolean" />
+              <xsd:element minOccurs="0" name="Index" type="xsd:int" />
+              <xsd:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="CanTransferFrom" nillable="true" type="q21:ArrayOfstring" />
+              <xsd:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="CanTransferTo" nillable="true" type="q22:ArrayOfstring" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="Account" nillable="true" type="tns:Account" />
+      <xsd:complexType name="AccountBalance">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element name="Balance" type="xsd:double" />
+              <xsd:element name="BalanceDisplay" nillable="true" type="xsd:string" />
+              <xsd:element name="BalancePromptId" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="AccountBalance" nillable="true" type="tns:AccountBalance" />
+      <xsd:complexType name="ArrayOfAccountBalance">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="AccountBalance" nillable="true" type="tns:AccountBalance" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfAccountBalance" nillable="true" type="tns:ArrayOfAccountBalance" />
+      <xsd:complexType name="TransactionHistoryResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q23="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="TransactionHistoryResult" type="q23:TransactionHistoryResult" />
+              <xsd:element name="TransactionHistoryResultText" nillable="true" type="xsd:string" />
+              <xsd:element name="ForwardPagingToken" nillable="true" type="xsd:string" />
+              <xsd:element name="BackwardPagingToken" nillable="true" type="xsd:string" />
+              <xsd:element name="Transactions" nillable="true" type="tns:ArrayOfBankTransactionRecord" />
+              <xsd:element name="TransactionsPerPage" type="xsd:int" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="TransactionHistoryResponse" nillable="true" type="tns:TransactionHistoryResponse" />
+      <xsd:complexType name="ArrayOfBankTransactionRecord">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="BankTransactionRecord" nillable="true" type="tns:BankTransactionRecord" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfBankTransactionRecord" nillable="true" type="tns:ArrayOfBankTransactionRecord" />
+      <xsd:complexType name="BankTransactionRecord">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element name="TransactionID" nillable="true" type="xsd:string" />
+              <xsd:element name="TransactionDate" type="xsd:dateTime" />
+              <xsd:element name="ProcessDate" type="xsd:dateTime" />
+              <xsd:element name="TransactionType" nillable="true" type="xsd:string" />
+              <xsd:element name="Amount" type="xsd:double" />
+              <xsd:element name="DisplayAmount" nillable="true" type="xsd:string" />
+              <xsd:element name="DisplayDescription" nillable="true" type="xsd:string" />
+              <xsd:element name="DetailedDescription" nillable="true" type="xsd:string" />
+              <xsd:element name="DisplayDate" nillable="true" type="xsd:string" />
+              <xsd:element name="HasTransactionImage" type="xsd:boolean" />
+              <xsd:element minOccurs="0" name="CheckNumber" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="BankTransactionRecord" nillable="true" type="tns:BankTransactionRecord" />
+      <xsd:complexType name="LogoffResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q24="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="LogoffResult" type="q24:LogoffResult" />
+              <xsd:element name="LogoffResultText" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="LogoffResponse" nillable="true" type="tns:LogoffResponse" />
+      <xsd:complexType name="RegistrationResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q25="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="RegistrationResult" type="q25:RegistrationResult" />
+              <xsd:element name="RegistrationResultText" nillable="true" type="xsd:string" />
+              <xsd:element name="DeviceToken" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="RegistrationResponse" nillable="true" type="tns:RegistrationResponse" />
+      <xsd:complexType name="GetEnrolmentInfoResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q26="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="GetEnrolmentInfoResult" type="q26:GetEnrolmentInfoResult" />
+              <xsd:element name="GetEnrolmentInfoResultText" nillable="true" type="xsd:string" />
+              <xsd:element name="DeviceToken" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="MFAChallengeQuestionID" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="MFAChallengeQuestion" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetEnrolmentInfoResponse" nillable="true" type="tns:GetEnrolmentInfoResponse" />
+      <xsd:complexType name="FundTransferResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q27="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="FundTransferResult" type="q27:FundTransferResult" />
+              <xsd:element name="FundTransferResultText" nillable="true" type="xsd:string" />
+              <xsd:element name="ReceiptNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="UpdatedFromAccount" nillable="true" type="tns:Account" />
+              <xsd:element name="UpdatedToAccount" nillable="true" type="tns:Account" />
+              <xsd:element minOccurs="0" name="QuestionId" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="QuestionText" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="FundTransferResponse" nillable="true" type="tns:FundTransferResponse" />
+      <xsd:complexType name="GetBillsResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element name="Bills" nillable="true" type="tns:ArrayOfBill" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetBillsResponse" nillable="true" type="tns:GetBillsResponse" />
+      <xsd:complexType name="ArrayOfBill">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Bill" nillable="true" type="tns:Bill" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfBill" nillable="true" type="tns:ArrayOfBill" />
+      <xsd:complexType name="Bill">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element name="PayeeIdentifier" nillable="true" type="xsd:string" />
+              <xsd:element name="PayeeName" nillable="true" type="xsd:string" />
+              <xsd:element name="AccountNumberMask" nillable="true" type="xsd:string" />
+              <xsd:element name="Balance" type="xsd:double" />
+              <xsd:element name="MinimumAmountDue" type="xsd:double" />
+              <xsd:element name="TotalAmountDue" type="xsd:double" />
+              <xsd:element name="DebitDate" type="xsd:dateTime" />
+              <xsd:element name="PaymentDate" type="xsd:dateTime" />
+              <xsd:element name="DueDateTextListDisplay" nillable="true" type="xsd:string" />
+              <xsd:element name="DueDateTextDetailsDisplay" nillable="true" type="xsd:string" />
+              <xsd:element name="StatementId" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="HasTextualDueDate" type="xsd:boolean" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="Bill" nillable="true" type="tns:Bill" />
+      <xsd:complexType name="GetOutstandingBillsCountResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element name="OutstandingBillsCount" type="xsd:int" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetOutstandingBillsCountResponse" nillable="true" type="tns:GetOutstandingBillsCountResponse" />
+      <xsd:complexType name="GetCategoriesResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q28="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="Categories" nillable="true" type="q28:ArrayOfstring" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetCategoriesResponse" nillable="true" type="tns:GetCategoriesResponse" />
+      <xsd:complexType name="GetTermsAndConditionsResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element name="TermsAndConditions" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="showFullTerms" type="xsd:boolean" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetTermsAndConditionsResponse" nillable="true" type="tns:GetTermsAndConditionsResponse" />
+      <xsd:complexType name="GetPayeesResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q29="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="GetPayeesResult" type="q29:GetPayeesResult" />
+              <xsd:element name="GetPayeesResultText" nillable="true" type="xsd:string" />
+              <xsd:element name="ForwardPagingToken" nillable="true" type="xsd:string" />
+              <xsd:element name="Payees" nillable="true" type="tns:ArrayOfPayee" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetPayeesResponse" nillable="true" type="tns:GetPayeesResponse" />
+      <xsd:complexType name="ArrayOfPayee">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Payee" nillable="true" type="tns:Payee" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfPayee" nillable="true" type="tns:ArrayOfPayee" />
+      <xsd:complexType name="Payee">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element name="Identifier" nillable="true" type="xsd:string" />
+              <xsd:element name="DisplayName" nillable="true" type="xsd:string" />
+              <xsd:element name="BillCountSpecified" type="xsd:boolean" />
+              <xsd:element name="BillCount" type="xsd:int" />
+              <xsd:element name="MaskAccountNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="CurrentBillIDSpecified" type="xsd:boolean" />
+              <xsd:element name="CurrentBillID" nillable="true" type="xsd:string" />
+              <xsd:element name="CurrentBillStatementDateSpecified" type="xsd:boolean" />
+              <xsd:element name="CurrentBillStatementDate" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="Payee" nillable="true" type="tns:Payee" />
+      <xsd:complexType name="GetPayeesAndBillsResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q30="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="GetPayeesResult" type="q30:GetPayeesAndBillsResult" />
+              <xsd:element name="GetPayeesResultText" nillable="true" type="xsd:string" />
+              <xsd:element name="ForwardPagingToken" nillable="true" type="xsd:string" />
+              <xsd:element name="Payees" nillable="true" type="tns:ArrayOfPayeeWithBills" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetPayeesAndBillsResponse" nillable="true" type="tns:GetPayeesAndBillsResponse" />
+      <xsd:complexType name="ArrayOfPayeeWithBills">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PayeeWithBills" nillable="true" type="tns:PayeeWithBills" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfPayeeWithBills" nillable="true" type="tns:ArrayOfPayeeWithBills" />
+      <xsd:complexType name="PayeeWithBills">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element name="PayeeEntity" nillable="true" type="tns:Payee" />
+              <xsd:element name="Bills" nillable="true" type="tns:ArrayOfBill" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="PayeeWithBills" nillable="true" type="tns:PayeeWithBills" />
+      <xsd:complexType name="PayeePaymentResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q31="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="PayeePaymentResult" type="q31:PayeePaymentResult" />
+              <xsd:element name="PayeePaymentResultText" nillable="true" type="xsd:string" />
+              <xsd:element name="ReceiptNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="PostingDate" nillable="true" type="xsd:dateTime" />
+              <xsd:element name="ProcessDate" nillable="true" type="xsd:dateTime" />
+              <xsd:element name="PostingDateDisplay" nillable="true" type="xsd:string" />
+              <xsd:element name="ProcessDateDisplay" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="QuestionId" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="QuestionText" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="PayeePaymentResponse" nillable="true" type="tns:PayeePaymentResponse" />
+      <xsd:complexType name="GetPayeesPaymentsResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q32="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="GetPayeesPaymentsResult" type="q32:GetPayeesPaymentsResult" />
+              <xsd:element name="GetPayeesPaymentsResultText" nillable="true" type="xsd:string" />
+              <xsd:element name="Payments" nillable="true" type="tns:ArrayOfPayeePayment" />
+              <xsd:element name="PaginationToken" nillable="true" type="xsd:string" />
+              <xsd:element name="PaymentsPerPage" type="xsd:int" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetPayeesPaymentsResponse" nillable="true" type="tns:GetPayeesPaymentsResponse" />
+      <xsd:complexType name="ArrayOfPayeePayment">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PayeePayment" nillable="true" type="tns:PayeePayment" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfPayeePayment" nillable="true" type="tns:ArrayOfPayeePayment" />
+      <xsd:complexType name="PayeePayment">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element name="Identifier" nillable="true" type="xsd:string" />
+              <xsd:element name="Payee" nillable="true" type="tns:Payee" />
+              <xsd:element name="Amount" type="xsd:double" />
+              <xsd:element name="PaymentDate" type="xsd:dateTime" />
+              <xsd:element name="AccountNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="AccountName" nillable="true" type="xsd:string" />
+              <xsd:element name="AccountBalance" nillable="true" type="xsd:string" />
+              <xsd:element name="DebitDate" type="xsd:dateTime" />
+              <xsd:element name="PaymentDateDisplay" nillable="true" type="xsd:string" />
+              <xsd:element name="DebitDateDisplay" nillable="true" type="xsd:string" />
+              <xsd:element name="ConfirmationNumberDisplay" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="PayeePayment" nillable="true" type="tns:PayeePayment" />
+      <xsd:complexType name="CancelPayeePaymentResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q33="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="CancelPayeePaymentResult" type="q33:CancelPayeePaymentResult" />
+              <xsd:element name="CancelPayeePaymentResultText" nillable="true" type="xsd:string" />
+              <xsd:element name="ReceiptNumber" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="QuestionId" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="QuestionText" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="CancelPayeePaymentResponse" nillable="true" type="tns:CancelPayeePaymentResponse" />
+      <xsd:complexType name="ModifyPayeePaymentResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element name="ReceiptNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="PostingDate" nillable="true" type="xsd:dateTime" />
+              <xsd:element name="ProcessDate" nillable="true" type="xsd:dateTime" />
+              <xsd:element name="IsPayerAccountRefreshed" type="xsd:boolean" />
+              <xsd:element name="RefreshedPayerAccount" nillable="true" type="tns:Account" />
+              <xsd:element name="PostingDateDisplay" nillable="true" type="xsd:string" />
+              <xsd:element name="ProcessDateDisplay" nillable="true" type="xsd:string" />
+              <xsd:element xmlns:q34="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="ModifyPayeePaymentResult" type="q34:ModifyPayeePaymentResult" />
+              <xsd:element minOccurs="0" name="QuestionId" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="QuestionText" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ModifyPayeePaymentResponse" nillable="true" type="tns:ModifyPayeePaymentResponse" />
+      <xsd:complexType name="ATMBranchSearchResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q35="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="ATMBranchSearchResult" type="q35:ATMBranchSearchResult" />
+              <xsd:element name="ATMBranchSearchResultText" nillable="true" type="xsd:string" />
+              <xsd:element name="Locations" nillable="true" type="tns:ArrayOfLocationInfo" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ATMBranchSearchResponse" nillable="true" type="tns:ATMBranchSearchResponse" />
+      <xsd:complexType name="ArrayOfLocationInfo">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="LocationInfo" nillable="true" type="tns:LocationInfo" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfLocationInfo" nillable="true" type="tns:ArrayOfLocationInfo" />
+      <xsd:complexType name="GetEarliestPaymentDateResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element name="Today" type="xsd:dateTime" />
+              <xsd:element name="EarliestDate" type="xsd:dateTime" />
+              <xsd:element xmlns:q36="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="PaymentHolidays" nillable="true" type="q36:ArrayOfdateTime" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetEarliestPaymentDateResponse" nillable="true" type="tns:GetEarliestPaymentDateResponse" />
+      <xsd:complexType name="ValidatePaymentResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element name="ConfirmationNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="PostingDate" nillable="true" type="xsd:dateTime" />
+              <xsd:element name="ProcessDate" nillable="true" type="xsd:dateTime" />
+              <xsd:element name="PostingDateDisplay" nillable="true" type="xsd:string" />
+              <xsd:element name="ProcessDateDisplay" nillable="true" type="xsd:string" />
+              <xsd:element xmlns:q37="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="ValidatePaymentResult" type="q37:ValidatePaymentResult" />
+              <xsd:element name="ValidatePaymentResultText" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ValidatePaymentResponse" nillable="true" type="tns:ValidatePaymentResponse" />
+      <xsd:complexType name="BrandingInfoResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q38="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="BrandingInfoResult" type="q38:GetBrandingInfoResult" />
+              <xsd:element name="BankName" nillable="true" type="xsd:string" />
+              <xsd:element name="Label" nillable="true" type="xsd:string" />
+              <xsd:element xmlns:q39="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Prompts" nillable="true" type="q39:ArrayOfKeyValueOfstringstring" />
+              <xsd:element xmlns:q40="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Images" nillable="true" type="q40:ArrayOfKeyValueOfstringstring" />
+              <xsd:element xmlns:q41="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="StyleSheets" nillable="true" type="q41:ArrayOfKeyValueOfstringstring" />
+              <xsd:element xmlns:q42="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CssPatches" nillable="true" type="q42:ArrayOfKeyValueOfstringstring" />
+              <xsd:element xmlns:q43="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="XMLConfig" nillable="true" type="q43:ArrayOfKeyValueOfstringstring" />
+              <xsd:element xmlns:q44="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Urls" nillable="true" type="q44:ArrayOfKeyValueOfstringstring" />
+              <xsd:element xmlns:q45="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Colors" nillable="true" type="q45:ArrayOfKeyValueOfstringstring" />
+              <xsd:element xmlns:q46="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Settings" nillable="true" type="q46:ArrayOfKeyValueOfstringstring" />
+              <xsd:element minOccurs="0" name="MenuItem" nillable="true" type="tns:MenuItem" />
+              <xsd:element name="LastUpdateTime" type="xsd:dateTime" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="BrandingInfoResponse" nillable="true" type="tns:BrandingInfoResponse" />
+      <xsd:complexType name="GetResourceResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element name="ResourceKey" nillable="true" type="xsd:string" />
+              <xsd:element name="Data" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetResourceResponse" nillable="true" type="tns:GetResourceResponse" />
+      <xsd:complexType name="GetCheckImageResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element name="CheckImages" nillable="true" type="tns:ArrayOfCheckImage" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetCheckImageResponse" nillable="true" type="tns:GetCheckImageResponse" />
+      <xsd:complexType name="ArrayOfCheckImage">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="CheckImage" nillable="true" type="tns:CheckImage" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfCheckImage" nillable="true" type="tns:ArrayOfCheckImage" />
+      <xsd:complexType name="CheckImage">
+        <xsd:sequence>
+          <xsd:element name="ImageData" nillable="true" type="xsd:base64Binary" />
+          <xsd:element name="ImageSide" type="tns:ImageSide" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CheckImage" nillable="true" type="tns:CheckImage" />
+      <xsd:complexType name="AddDepositImageResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="ImageId" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="DeclinedCode" nillable="true" type="tns:AddDepositImageDeclinedCode" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="AddDepositImageResponse" nillable="true" type="tns:AddDepositImageResponse" />
+      <xsd:simpleType name="AddDepositImageDeclinedCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="InternalHostError" />
+          <xsd:enumeration value="InvalidRequestData" />
+          <xsd:enumeration value="NullImageData" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="AddDepositImageDeclinedCode" nillable="true" type="tns:AddDepositImageDeclinedCode" />
+      <xsd:complexType name="GetDepositImageResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element name="ImageData" nillable="true" type="xsd:base64Binary" />
+              <xsd:element minOccurs="0" name="DeclinedCode" nillable="true" type="tns:GetDepositImagesDeclinedCode" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetDepositImageResponse" nillable="true" type="tns:GetDepositImageResponse" />
+      <xsd:simpleType name="GetDepositImagesDeclinedCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="InternalHostError" />
+          <xsd:enumeration value="InvalidRequestData" />
+          <xsd:enumeration value="InvalidImageId" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="GetDepositImagesDeclinedCode" nillable="true" type="tns:GetDepositImagesDeclinedCode" />
+      <xsd:complexType name="GetDepositsResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="Deposits" nillable="true" type="tns:ArrayOfDeposit" />
+              <xsd:element minOccurs="0" name="DeclinedCode" nillable="true" type="tns:GetDepositsDeclinedCode" />
+              <xsd:element minOccurs="0" name="MoreDepositsAvailable" type="xsd:boolean" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetDepositsResponse" nillable="true" type="tns:GetDepositsResponse" />
+      <xsd:complexType name="ArrayOfDeposit">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Deposit" nillable="true" type="tns:Deposit" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfDeposit" nillable="true" type="tns:ArrayOfDeposit" />
+      <xsd:complexType name="Deposit">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element name="Amount" type="xsd:decimal" />
+              <xsd:element name="DepositId" nillable="true" type="xsd:string" />
+              <xsd:element name="AccountNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="DisplayAccountNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="DisplayAccountName" nillable="true" type="xsd:string" />
+              <xsd:element name="DepositStatus" type="tns:DepositStatus" />
+              <xsd:element minOccurs="0" name="SubmittedDate" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="ModifiedDate" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="OriginalDepositStatus" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="SubmittedDateObject" nillable="true" type="xsd:dateTime" />
+              <xsd:element minOccurs="0" name="ModifiedDateObject" nillable="true" type="xsd:dateTime" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="Deposit" nillable="true" type="tns:Deposit" />
+      <xsd:simpleType name="GetDepositsDeclinedCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="InternalHostError" />
+          <xsd:enumeration value="InvalidRequestData" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="GetDepositsDeclinedCode" nillable="true" type="tns:GetDepositsDeclinedCode" />
+      <xsd:complexType name="SubmitDepositResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="DepositId" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="DeclinedCode" nillable="true" type="tns:SubmitDepositDeclinedCode" />
+              <xsd:element name="AllowRetry" type="xsd:boolean" />
+              <xsd:element minOccurs="0" name="QuestionId" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="QuestionText" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="SubmitDepositResponse" nillable="true" type="tns:SubmitDepositResponse" />
+      <xsd:simpleType name="SubmitDepositDeclinedCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="InternalHostError" />
+          <xsd:enumeration value="InvalidRequestData" />
+          <xsd:enumeration value="InvalidImageId" />
+          <xsd:enumeration value="InvalidImageData" />
+          <xsd:enumeration value="InvalidMicrData" />
+          <xsd:enumeration value="MissingInformation" />
+          <xsd:enumeration value="DailyDepositThresholdExceeded" />
+          <xsd:enumeration value="DailyDepositCountThresholdExceeded" />
+          <xsd:enumeration value="DepositThresholdExceeded" />
+          <xsd:enumeration value="InvalidAmount" />
+          <xsd:enumeration value="InvalidDepositThreshold" />
+          <xsd:enumeration value="InvalidDailyDepositThreshold" />
+          <xsd:enumeration value="InvalidDailyDepositCount" />
+          <xsd:enumeration value="CannotReadCheck" />
+          <xsd:enumeration value="CannotFindEndorcement" />
+          <xsd:enumeration value="ShadowOrLowContrastOnImage" />
+          <xsd:enumeration value="CannotReadAccountNumber" />
+          <xsd:enumeration value="InvalidAngle" />
+          <xsd:enumeration value="TwoFrontImages" />
+          <xsd:enumeration value="AmountDetectedDoesNotMatchAmountEntered" />
+          <xsd:enumeration value="DuplicateCheck" />
+          <xsd:enumeration value="FailMfa" />
+          <xsd:enumeration value="MoreRequired" />
+          <xsd:enumeration value="FailCountExceeded" />
+          <xsd:enumeration value="UnknownMfa" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="SubmitDepositDeclinedCode" nillable="true" type="tns:SubmitDepositDeclinedCode" />
+      <xsd:complexType name="ValidateDepositResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="DeclinedCode" nillable="true" type="tns:ValidateDepositDeclinedCode" />
+              <xsd:element name="AllowRetry" type="xsd:boolean" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ValidateDepositResponse" nillable="true" type="tns:ValidateDepositResponse" />
+      <xsd:simpleType name="ValidateDepositDeclinedCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="InternalHostError" />
+          <xsd:enumeration value="InvalidRequestData" />
+          <xsd:enumeration value="DailyDepositThresholdExceeded" />
+          <xsd:enumeration value="DailyDepositCountThresholdExceeded" />
+          <xsd:enumeration value="DepositThresholdExceeded" />
+          <xsd:enumeration value="InvalidAmount" />
+          <xsd:enumeration value="InvalidDepositThreshold" />
+          <xsd:enumeration value="InvalidDailyDepositThreshold" />
+          <xsd:enumeration value="InvalidDailyDepositCount" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="ValidateDepositDeclinedCode" nillable="true" type="tns:ValidateDepositDeclinedCode" />
+      <xsd:complexType name="GetPersonalPaymentContactsResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="ContactList" nillable="true" type="tns:ArrayOfContact" />
+              <xsd:element minOccurs="0" name="HasNextPage" nillable="true" type="xsd:boolean" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetPersonalPaymentContactsResponse" nillable="true" type="tns:GetPersonalPaymentContactsResponse" />
+      <xsd:complexType name="ArrayOfContact">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Contact" nillable="true" type="tns:Contact" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfContact" nillable="true" type="tns:ArrayOfContact" />
+      <xsd:complexType name="Contact">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element name="ContactId" nillable="true" type="xsd:string" />
+              <xsd:element name="FirstName" nillable="true" type="xsd:string" />
+              <xsd:element name="LastName" nillable="true" type="xsd:string" />
+              <xsd:element name="Endpoints" nillable="true" type="tns:ArrayOfEndpoint" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="Contact" nillable="true" type="tns:Contact" />
+      <xsd:complexType name="ArrayOfEndpoint">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Endpoint" nillable="true" type="tns:Endpoint" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfEndpoint" nillable="true" type="tns:ArrayOfEndpoint" />
+      <xsd:complexType name="Endpoint">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element name="EndpointId" nillable="true" type="xsd:string" />
+              <xsd:element name="EndpointType" type="tns:EndpointType" />
+              <xsd:element name="EndpointText" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="Endpoint" nillable="true" type="tns:Endpoint" />
+      <xsd:simpleType name="EndpointType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="MobilePhone" />
+          <xsd:enumeration value="Email" />
+          <xsd:enumeration value="Account" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="EndpointType" nillable="true" type="tns:EndpointType" />
+      <xsd:complexType name="ProcessPersonalPaymentResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="PaymentId" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="ExpectedDeliveryDateSystemTime" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="ExpectedDeliveryFee" nillable="true" type="xsd:decimal" />
+              <xsd:element minOccurs="0" name="ConfirmationNumber" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="QuestionText" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="ExpectedDeliveryDateSystemTimeObject" nillable="true" type="xsd:dateTime" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ProcessPersonalPaymentResponse" nillable="true" type="tns:ProcessPersonalPaymentResponse" />
+      <xsd:complexType name="AddPersonalPaymentContactResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="Contact" nillable="true" type="tns:Contact" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="AddPersonalPaymentContactResponse" nillable="true" type="tns:AddPersonalPaymentContactResponse" />
+      <xsd:complexType name="ValidatePersonalPaymentResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="PaymentSpeedFees" nillable="true" type="tns:ArrayOfPaymentSpeedFee" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ValidatePersonalPaymentResponse" nillable="true" type="tns:ValidatePersonalPaymentResponse" />
+      <xsd:complexType name="ArrayOfPaymentSpeedFee">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PaymentSpeedFee" nillable="true" type="tns:PaymentSpeedFee" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfPaymentSpeedFee" nillable="true" type="tns:ArrayOfPaymentSpeedFee" />
+      <xsd:complexType name="PaymentSpeedFee">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="PaymentSpeed" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="ExpectedDeliveryDateSystemTime" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="ExpectedDeliveryFee" nillable="true" type="xsd:decimal" />
+              <xsd:element minOccurs="0" name="ExpectedDeliveryDateSystemTimeObject" nillable="true" type="xsd:dateTime" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="PaymentSpeedFee" nillable="true" type="tns:PaymentSpeedFee" />
+      <xsd:complexType name="GetIncomingPersonalPaymentsResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="IncomingPayments" nillable="true" type="tns:ArrayOfIncomingPersonalPayment" />
+              <xsd:element minOccurs="0" name="HasNextPage" type="xsd:boolean" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetIncomingPersonalPaymentsResponse" nillable="true" type="tns:GetIncomingPersonalPaymentsResponse" />
+      <xsd:complexType name="ArrayOfIncomingPersonalPayment">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="IncomingPersonalPayment" nillable="true" type="tns:IncomingPersonalPayment" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfIncomingPersonalPayment" nillable="true" type="tns:ArrayOfIncomingPersonalPayment" />
+      <xsd:complexType name="IncomingPersonalPayment">
+        <xsd:sequence>
+          <xsd:element name="PaymentId" nillable="true" type="xsd:string" />
+          <xsd:element name="Status" type="tns:PaymentStatus" />
+          <xsd:element name="Amount" type="xsd:decimal" />
+          <xsd:element name="DateSentUtc" nillable="true" type="xsd:string" />
+          <xsd:element name="ExpiryDateUtc" nillable="true" type="xsd:string" />
+          <xsd:element name="DateSentSystemTime" nillable="true" type="xsd:string" />
+          <xsd:element name="ExpiryDateSystemTime" nillable="true" type="xsd:string" />
+          <xsd:element name="SenderName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="DateSentUtcObject" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="ExpiryDateUtcObject" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="DateSentSystemTimeObject" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="ExpiryDateSystemTimeObject" nillable="true" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="IncomingPersonalPayment" nillable="true" type="tns:IncomingPersonalPayment" />
+      <xsd:simpleType name="PaymentStatus">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="OnHold" />
+          <xsd:enumeration value="Canceled" />
+          <xsd:enumeration value="Pending" />
+          <xsd:enumeration value="InProgress" />
+          <xsd:enumeration value="Failed" />
+          <xsd:enumeration value="Stopped" />
+          <xsd:enumeration value="Expired" />
+          <xsd:enumeration value="Completed" />
+          <xsd:enumeration value="UnderReview" />
+          <xsd:enumeration value="Unknown" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="PaymentStatus" nillable="true" type="tns:PaymentStatus" />
+      <xsd:complexType name="AnswerMfaForProcessPersonalPaymentResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="QuestionText" nillable="true" type="xsd:string" />
+              <xsd:element xmlns:q47="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.Framework.Core.Security" minOccurs="0" name="MfaResultCode" type="q47:MfaChallengeResult.Code" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="AnswerMfaForProcessPersonalPaymentResponse" nillable="true" type="tns:AnswerMfaForProcessPersonalPaymentResponse" />
+      <xsd:complexType name="ReceiveIncomingPersonalPaymentResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="ExpectedDeliveryDateSystemTime" nillable="true" type="xsd:string" />
+              <xsd:element minOccurs="0" name="ExpectedDeliveryDateSystemTimeObject" nillable="true" type="xsd:dateTime" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ReceiveIncomingPersonalPaymentResponse" nillable="true" type="tns:ReceiveIncomingPersonalPaymentResponse" />
+      <xsd:complexType name="GetPersonalPaymentHistoryResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="PaymentHistoryList" nillable="true" type="tns:ArrayOfOutgoingPayment" />
+              <xsd:element minOccurs="0" name="HasNextPage" type="xsd:boolean" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetPersonalPaymentHistoryResponse" nillable="true" type="tns:GetPersonalPaymentHistoryResponse" />
+      <xsd:complexType name="ArrayOfOutgoingPayment">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="OutgoingPayment" nillable="true" type="tns:OutgoingPayment" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfOutgoingPayment" nillable="true" type="tns:ArrayOfOutgoingPayment" />
+      <xsd:complexType name="OutgoingPayment">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="PaymentId" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ExpectedDeliveryDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ExpectedDeliveryDateSystemTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ExpectedDeliveryFee" type="xsd:decimal" />
+          <xsd:element minOccurs="0" name="Endpoint" nillable="true" type="tns:Endpoint" />
+          <xsd:element minOccurs="0" name="PayeeName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="FundingAccount" nillable="true" type="tns:Account" />
+          <xsd:element minOccurs="0" name="FromAccountDisplayName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="SendDateUtc" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="SendDateSystemTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Status" type="tns:PaymentStatus" />
+          <xsd:element minOccurs="0" name="Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" name="ExpiryDateUtc" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ExpiryDateSystemTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ExpectedDeliveryDateObject" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="ExpectedDeliveryDateSystemTimeObject" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="SendDateUtcObject" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="SendDateSystemTimeObject" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="ExpiryDateUtcObject" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="ExpiryDateSystemTimeObject" nillable="true" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="OutgoingPayment" nillable="true" type="tns:OutgoingPayment" />
+      <xsd:complexType name="PingResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="PingResponse" nillable="true" type="tns:PingResponse" />
+      <xsd:complexType name="GetMfaQuestionResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element name="QuestionId" nillable="true" type="xsd:string" />
+              <xsd:element name="QuestionText" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetMfaQuestionResponse" nillable="true" type="tns:GetMfaQuestionResponse" />
+      <xsd:complexType name="GetDynamicBrandingInfoResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence>
+              <xsd:element xmlns:q48="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" name="BrandingInfoResult" type="q48:GetDynamicBrandingInfoResult" />
+              <xsd:element minOccurs="0" name="Colors" nillable="true" type="tns:ArrayOfNameValuePair" />
+              <xsd:element minOccurs="0" name="Images" nillable="true" type="tns:ArrayOfNameValuePair" />
+              <xsd:element minOccurs="0" name="Settings" nillable="true" type="tns:ArrayOfNameValuePair" />
+              <xsd:element minOccurs="0" name="Prompts" nillable="true">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:any minOccurs="0" processContents="lax" />
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="LastUpdateTime" type="xsd:dateTime" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="GetDynamicBrandingInfoResponse" nillable="true" type="tns:GetDynamicBrandingInfoResponse" />
+      <xsd:complexType name="MarkNewTCsAsReadResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelResponse">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="MarkNewTCsAsReadResponse" nillable="true" type="tns:MarkNewTCsAsReadResponse" />
+      <xsd:complexType name="RichChannelServiceFault">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:RichChannelContractBase">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="Message" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="RichChannelServiceFault" nillable="true" type="tns:RichChannelServiceFault" />
+    </xsd:schema>
+    <xsd:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.RichChannel.Service.DataContracts">
+      <xsd:simpleType name="LoginType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Local" />
+          <xsd:enumeration value="Remote" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="LoginType" nillable="true" type="tns:LoginType" />
+      <xsd:simpleType name="LocationType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="ATM" />
+          <xsd:enumeration value="Branch" />
+          <xsd:enumeration value="ATMBranch" />
+          <xsd:enumeration value="Category" />
+          <xsd:enumeration value="All" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="LocationType" nillable="true" type="tns:LocationType" />
+      <xsd:simpleType name="SearchMethod">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="GPS" />
+          <xsd:enumeration value="ZipCode" />
+          <xsd:enumeration value="StreetAddress" />
+          <xsd:enumeration value="Category" />
+          <xsd:enumeration value="All" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="SearchMethod" nillable="true" type="tns:SearchMethod" />
+      <xsd:simpleType name="RichChannelResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Accepted" />
+          <xsd:enumeration value="Declined" />
+          <xsd:enumeration value="Failed" />
+          <xsd:enumeration value="InvalidSequence" />
+          <xsd:enumeration value="SessionNotFound" />
+          <xsd:enumeration value="MFARequired" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="RichChannelResult" nillable="true" type="tns:RichChannelResult" />
+      <xsd:simpleType name="PostInstallNotificationResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Success" />
+          <xsd:enumeration value="InvalidToken" />
+          <xsd:enumeration value="AlreadyUsed" />
+          <xsd:enumeration value="Expired" />
+          <xsd:enumeration value="InvalidParameters" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="PostInstallNotificationResult" nillable="true" type="tns:PostInstallNotificationResult" />
+      <xsd:simpleType name="PreAuthenticateResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="LoginPermitted" />
+          <xsd:enumeration value="DenyUnspecified" />
+          <xsd:enumeration value="DenyNotRecognised" />
+          <xsd:enumeration value="DenyNoPasswordSet" />
+          <xsd:enumeration value="DenyLockedOut" />
+          <xsd:enumeration value="DenySuspended" />
+          <xsd:enumeration value="ActivationRequired" />
+          <xsd:enumeration value="ChangePasswordRequired" />
+          <xsd:enumeration value="DenyVersionUnsupported" />
+          <xsd:enumeration value="DenyFISuspended" />
+          <xsd:enumeration value="MFARequired" />
+          <xsd:enumeration value="DenyMfaNotSetup" />
+          <xsd:enumeration value="DenyInvalidPromotionalCode" />
+          <xsd:enumeration value="DenyChannelDisabled" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="PreAuthenticateResult" nillable="true" type="tns:PreAuthenticateResult" />
+      <xsd:simpleType name="VersionCheckResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Current" />
+          <xsd:enumeration value="UpdateAvailable" />
+          <xsd:enumeration value="Expired" />
+          <xsd:enumeration value="ApplicationTypeChanged" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="VersionCheckResult" nillable="true" type="tns:VersionCheckResult" />
+      <xsd:simpleType name="MFAResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Pass" />
+          <xsd:enumeration value="Fail" />
+          <xsd:enumeration value="MoreRequired" />
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="FailCountExceeded" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="MFAResult" nillable="true" type="tns:MFAResult" />
+      <xsd:simpleType name="MFAResultLoginState">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="LoginPermitted" />
+          <xsd:enumeration value="LoginSuccessful" />
+          <xsd:enumeration value="EnrolmentRequired" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="MFAResultLoginState" nillable="true" type="tns:MFAResultLoginState" />
+      <xsd:simpleType name="LoginResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="LoginSuccessful" />
+          <xsd:enumeration value="ActivationRequired" />
+          <xsd:enumeration value="PasswordRequired" />
+          <xsd:enumeration value="LoginFailed" />
+          <xsd:enumeration value="LockedOut" />
+          <xsd:enumeration value="LoginExpired" />
+          <xsd:enumeration value="Suspended" />
+          <xsd:enumeration value="InvalidToken" />
+          <xsd:enumeration value="MfaRequired" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="LoginResult" nillable="true" type="tns:LoginResult" />
+      <xsd:simpleType name="BalanceResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Accepted" />
+          <xsd:enumeration value="InvalidAccount" />
+          <xsd:enumeration value="InvalidCustomer" />
+          <xsd:enumeration value="BalanceUnavailable" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="BalanceResult" nillable="true" type="tns:BalanceResult" />
+      <xsd:simpleType name="TransactionHistoryResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Accepted" />
+          <xsd:enumeration value="InvalidAccount" />
+          <xsd:enumeration value="InvalidCustomer" />
+          <xsd:enumeration value="TransactionHistoryUnavailable" />
+          <xsd:enumeration value="NoTransactions" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="TransactionHistoryResult" nillable="true" type="tns:TransactionHistoryResult" />
+      <xsd:simpleType name="LogoffResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Accepted" />
+          <xsd:enumeration value="Failed" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="LogoffResult" nillable="true" type="tns:LogoffResult" />
+      <xsd:simpleType name="RegistrationResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Accepted" />
+          <xsd:enumeration value="LoginFailed" />
+          <xsd:enumeration value="LoginFailedLockedOut" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="RegistrationResult" nillable="true" type="tns:RegistrationResult" />
+      <xsd:simpleType name="GetEnrolmentInfoResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Accepted" />
+          <xsd:enumeration value="LoginFailed" />
+          <xsd:enumeration value="LoginFailedLockedOut" />
+          <xsd:enumeration value="EnrolmentRequired" />
+          <xsd:enumeration value="LoginSuccessful" />
+          <xsd:enumeration value="MfaRequired" />
+          <xsd:enumeration value="DenyMfaNotSetup" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="GetEnrolmentInfoResult" nillable="true" type="tns:GetEnrolmentInfoResult" />
+      <xsd:simpleType name="FundTransferResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Accepted" />
+          <xsd:enumeration value="InvalidFromAccount" />
+          <xsd:enumeration value="InvalidToAccount" />
+          <xsd:enumeration value="InvalidAmount" />
+          <xsd:enumeration value="FromAndToAccountSame" />
+          <xsd:enumeration value="FailMfa" />
+          <xsd:enumeration value="MoreRequired" />
+          <xsd:enumeration value="FailCountExceeded" />
+          <xsd:enumeration value="UnknownMfa" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="FundTransferResult" nillable="true" type="tns:FundTransferResult" />
+      <xsd:simpleType name="GetPayeesResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Accepted" />
+          <xsd:enumeration value="Declined" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="GetPayeesResult" nillable="true" type="tns:GetPayeesResult" />
+      <xsd:simpleType name="GetPayeesAndBillsResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Accepted" />
+          <xsd:enumeration value="Declined" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="GetPayeesAndBillsResult" nillable="true" type="tns:GetPayeesAndBillsResult" />
+      <xsd:simpleType name="PayeePaymentResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Accepted" />
+          <xsd:enumeration value="InvalidFromAccount" />
+          <xsd:enumeration value="InvalidPayee" />
+          <xsd:enumeration value="InvalidAmount" />
+          <xsd:enumeration value="InvalidDate" />
+          <xsd:enumeration value="FailMfa" />
+          <xsd:enumeration value="MoreRequired" />
+          <xsd:enumeration value="FailCountExceeded" />
+          <xsd:enumeration value="UnknownMfa" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="PayeePaymentResult" nillable="true" type="tns:PayeePaymentResult" />
+      <xsd:simpleType name="GetPayeesPaymentsResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Accepted" />
+          <xsd:enumeration value="Declined" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="GetPayeesPaymentsResult" nillable="true" type="tns:GetPayeesPaymentsResult" />
+      <xsd:simpleType name="CancelPayeePaymentResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Accepted" />
+          <xsd:enumeration value="InvalidPayment" />
+          <xsd:enumeration value="FailMfa" />
+          <xsd:enumeration value="MoreRequired" />
+          <xsd:enumeration value="FailCountExceeded" />
+          <xsd:enumeration value="UnknownMfa" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="CancelPayeePaymentResult" nillable="true" type="tns:CancelPayeePaymentResult" />
+      <xsd:simpleType name="ModifyPayeePaymentResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Accepted" />
+          <xsd:enumeration value="FailMfa" />
+          <xsd:enumeration value="MoreRequired" />
+          <xsd:enumeration value="FailCountExceeded" />
+          <xsd:enumeration value="UnknownMfa" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="ModifyPayeePaymentResult" nillable="true" type="tns:ModifyPayeePaymentResult" />
+      <xsd:simpleType name="ATMBranchSearchResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Accepted" />
+          <xsd:enumeration value="Declined" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="ATMBranchSearchResult" nillable="true" type="tns:ATMBranchSearchResult" />
+      <xsd:simpleType name="ValidatePaymentResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Accepted" />
+          <xsd:enumeration value="Declined" />
+          <xsd:enumeration value="Failed" />
+          <xsd:enumeration value="MissingProcessOrPostDate" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="ValidatePaymentResult" nillable="true" type="tns:ValidatePaymentResult" />
+      <xsd:simpleType name="GetBrandingInfoResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Accepted" />
+          <xsd:enumeration value="Failed" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="GetBrandingInfoResult" nillable="true" type="tns:GetBrandingInfoResult" />
+      <xsd:simpleType name="GetDynamicBrandingInfoResult">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="Accepted" />
+          <xsd:enumeration value="Failed" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="GetDynamicBrandingInfoResult" nillable="true" type="tns:GetDynamicBrandingInfoResult" />
+    </xsd:schema>
+    <xsd:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.Framework.Core.Configuration" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.Framework.Core.Configuration">
+      <xsd:simpleType name="ResourceDataRepresentationType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="String" />
+          <xsd:enumeration value="BinaryArray" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="ResourceDataRepresentationType" nillable="true" type="tns:ResourceDataRepresentationType" />
+    </xsd:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xsd:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+      <xsd:complexType name="ArrayOfKeyValueOfstringstring">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfstringstring">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="Key" nillable="true" type="xsd:string" />
+                <xsd:element name="Value" nillable="true" type="xsd:string" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfKeyValueOfstringstring" nillable="true" type="tns:ArrayOfKeyValueOfstringstring" />
+      <xsd:complexType name="ArrayOfstring">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
+      <xsd:complexType name="ArrayOfdateTime">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="dateTime" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfdateTime" nillable="true" type="tns:ArrayOfdateTime" />
+    </xsd:schema>
+    <xsd:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.Framework.Core.Security" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MCom.BankAnywhere.Framework.Core.Security">
+      <xsd:simpleType name="MfaChallengeResult.Code">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Pass" />
+          <xsd:enumeration value="Fail" />
+          <xsd:enumeration value="MoreRequired" />
+          <xsd:enumeration value="Unknown" />
+          <xsd:enumeration value="FailCountExceeded" />
+          <xsd:enumeration value="MfaNotSupportedButRequired" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="MfaChallengeResult.Code" nillable="true" type="tns:MfaChallengeResult.Code" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="RichChannelService_PreAuthenticate_InputMessage">
+    <wsdl:part name="parameters" element="tns:PreAuthenticate" />
+  </wsdl:message>
+  <wsdl:message name="RichChannelService_PreAuthenticate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PreAuthenticateResponse" />
+  </wsdl:message>
+  <wsdl:message name="RichChannelService_PreAuthenticate_RichChannelServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q49="http://mcom.co.nz/RichChannelService/DataContracts/2009/08" name="detail" element="q49:RichChannelServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="RichChannelService_Process_InputMessage">
+    <wsdl:part name="parameters" element="tns:Process" />
+  </wsdl:message>
+  <wsdl:message name="RichChannelService_Process_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="RichChannelService_Process_RichChannelServiceFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:RichChannelServiceFault" />
+  </wsdl:message>
+  <wsdl:portType name="RichChannelService">
+    <wsdl:operation name="PreAuthenticate">
+      <wsdl:input wsaw:Action="http://mcom.co.nz/RichChannelService/ServiceContracts/2009/08/RichChannelService/PreAuthenticate" message="tns:RichChannelService_PreAuthenticate_InputMessage" />
+      <wsdl:output wsaw:Action="http://mcom.co.nz/RichChannelService/ServiceContracts/2009/08/RichChannelService/PreAuthenticateResponse" message="tns:RichChannelService_PreAuthenticate_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://mcom.co.nz/RichChannelService/ServiceContracts/2009/08/RichChannelService/PreAuthenticateRichChannelServiceFaultFault" name="RichChannelServiceFaultFault" message="tns:RichChannelService_PreAuthenticate_RichChannelServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Process">
+      <wsdl:input wsaw:Action="http://mcom.co.nz/RichChannelService/ServiceContracts/2009/08/RichChannelService/Process" message="tns:RichChannelService_Process_InputMessage" />
+      <wsdl:output wsaw:Action="http://mcom.co.nz/RichChannelService/ServiceContracts/2009/08/RichChannelService/ProcessResponse" message="tns:RichChannelService_Process_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://mcom.co.nz/RichChannelService/ServiceContracts/2009/08/RichChannelService/ProcessRichChannelServiceFault" name="RichChannelServiceFault" message="tns:RichChannelService_Process_RichChannelServiceFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_RichChannelService" type="tns:RichChannelService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PreAuthenticate">
+      <soap:operation soapAction="http://mcom.co.nz/RichChannelService/ServiceContracts/2009/08/RichChannelService/PreAuthenticate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RichChannelServiceFaultFault">
+        <soap:fault use="literal" name="RichChannelServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Process">
+      <soap:operation soapAction="http://mcom.co.nz/RichChannelService/ServiceContracts/2009/08/RichChannelService/Process" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RichChannelServiceFault">
+        <soap:fault use="literal" name="RichChannelServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RichChannelService">
+    <wsdl:port name="BasicHttpBinding_RichChannelService" binding="tns:BasicHttpBinding_RichChannelService">
+      <soap:address location="http://pde14web.qa.mcom.co.nz/RichChannelWS/Service.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

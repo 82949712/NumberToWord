@@ -1,6 +1,10 @@
-﻿var app = angular.module("main", []);
+﻿var numberToWordModule = angular.module("numberToWord", []);
 
-app.controller('numberToWordController', function ($scope, $http, numberToWordService) {
+//numberToWordModule.config(function ($routeProvider) {
+//    $routeProvider.when('/')
+//});
+
+numberToWordModule.controller('numberToWordController', function ($scope, $http, numberToWordService) {
     $scope.convertNumber = function () {
         $scope.loading = true;
         $scope.convertResult = "";
@@ -15,7 +19,7 @@ app.controller('numberToWordController', function ($scope, $http, numberToWordSe
     };
 });
 
-app.factory('numberToWordService', function($http, $q) {
+numberToWordModule.factory('numberToWordService', function ($http, $q) {
     return{
         convertNumber: function (numberToConvert) {
             var defered = $q.defer();
@@ -30,7 +34,7 @@ app.factory('numberToWordService', function($http, $q) {
 
 });
 
-app.directive('loading', function () {
+numberToWordModule.directive('loading', function () {
     return {
         restrict: 'E',
         replace:true,

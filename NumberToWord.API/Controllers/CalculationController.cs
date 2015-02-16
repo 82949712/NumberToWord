@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using NumberToWord.DB;
+using System.Web.Http.Description;
 
 namespace NumberToWord.API.Controllers
 {
@@ -15,11 +16,10 @@ namespace NumberToWord.API.Controllers
     {
         //
         // GET: /Calculation/
-
-        public IEnumerable<Calculation> Get()
+        public IHttpActionResult Get()
         {
             CalculationDbContext dbContext = new CalculationDbContext();
-            return dbContext.Calculations;
+            return this.Ok(dbContext.Calculations);
         }
 
         public HttpResponseMessage Post([FromBody]Calculation calculation)

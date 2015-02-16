@@ -6,3 +6,4 @@ C:\Users\chli\Desktop\NumberToWord\NumberToWord.DB\obj\Debug\NumberToWord.DB.dll
 C:\Users\chli\Desktop\NumberToWord\NumberToWord.DB\obj\Debug\NumberToWord.DB.pdb
 C:\Users\chli\Desktop\NumberToWord\NumberToWord.DB\obj\Debug\NumberToWord.DB.csproj.GenerateResource.Cache
 C:\Users\chli\Desktop\NumberToWord\NumberToWord.DB\obj\Debug\NumberToWord.DB.Migrations.InitialCreate.resources
+C:\Users\chli\Desktop\NumberToWord\NumberToWord.DB\obj\Debug\NumberToWord.DB.csprojResolveAssemblyReference.cache
